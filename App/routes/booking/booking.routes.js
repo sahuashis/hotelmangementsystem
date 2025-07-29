@@ -1,10 +1,11 @@
-const express=require('express')
-const { addRoom } = require('../../controllers/room/room.controler')
-const { getMyBookings } = require('../../controllers/booking/booking.controller')
-const { authMiddleware } = require('../../middlewares/auth.middleware')
+// routes/booking/booking.routes.js
+const express = require('express');
+const { authMiddleware } = require('../../middlewares/auth.middleware');
+const { bookRoom, getUserBookings } = require('../../controllers/booking/booking.controller');
 
-let Bookingroutes=express.Router()
-Bookingroutes.post('/bookroom',addRoom)
-Bookingroutes.get('/getmybookings',getMyBookings)
+const bookingRouter = express.Router();
 
-module.exports={Bookingroutes}
+bookingRouter.post('/book',  bookRoom);
+bookingRouter.get('/my-bookings',  getUserBookings);
+
+module.exports = { bookingRouter };
