@@ -11,7 +11,7 @@ const registeruser = async (req, res) => {
       return res.status(409).json({ message: "Email already exists" });
     }
 
-    const newUser = new User({
+    const newUser = new userSchema({
       name,
       email,
       password,
