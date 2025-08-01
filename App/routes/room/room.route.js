@@ -7,7 +7,7 @@ const Roomrouter=express.Router()
 Roomrouter.get('/allrooms',getAllRooms)
 
 //Adimn
-Roomrouter.post('/addroom', addRoom)
+Roomrouter.post('/addroom',authMiddleware, isAdmin, addRoom)
 Roomrouter.put('/:id',authMiddleware,isAdmin,updateRoom)
 Roomrouter.delete('/:id',authMiddleware,isAdmin,deleteRoom)
 

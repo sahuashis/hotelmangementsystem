@@ -1,6 +1,7 @@
 let express=require('express')
 let mongoose=require('mongoose')
 var cors=require('cors')
+const  cookieparser=require("cookie-parser")
 const { hotelrouter } = require('./App/routes/auth/auth.routes')
 const { Roomrouter } = require('./App/routes/room/room.route')
 const { Bookingroutes, bookingRouter } = require('./App/routes/booking/booking.routes')
@@ -8,8 +9,10 @@ const { Bookingroutes, bookingRouter } = require('./App/routes/booking/booking.r
 require('dotenv').config()
 
 let app=express()
+
 app.use(express.json())
 app.use(cors())
+app.use(cookieparser())
 
 
 //routes
@@ -22,7 +25,7 @@ app.use('/api/bookings', bookingRouter);
 
 
 
-;
+
 
 
 
